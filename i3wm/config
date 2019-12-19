@@ -26,6 +26,8 @@ font pango:System San Francisco 11
 
 gaps inner 8
 gaps outer 5
+smart_gaps on
+smart_borders on
 #gaps horizontal 0
 #gaps vertical 0
 #gaps top 0
@@ -37,27 +39,30 @@ gaps outer 5
 # the arrows is not convenient
 set $up k
 set $down j
-set $left h
+set $left n
 set $right l
 
-set $bg-color                   #000000
+set $wMod Mod4
+set $aMod Mod1
+
+set $bg-color                   #d3d7cf
 set $inactive-bg-color          #000000
 set $text-color                 #f3f4f5
 set $inactive-text-color        #676e7d
 set $urgent-bg-color            #FF0000
+set $transparent		#0000009F
 
+bindsym $wMod+Shift+z exec xscreensaver-command --lock
 
-bindsym Mod4+Shift+z exec xscreensaver-command --lock
-
-# use Mouse+Mod1 to drag floating windows to their wanted position
-floating_modifier Mod4
+# use Mouse+$aMod to drag floating windows to their wanted position
+floating_modifier $wMod
 
 # start a terminal
-bindsym Mod4+Return exec xfce4-terminal
-bindsym Mod4+Mod1+Return exec xfce4-terminal --drop-down
+bindsym $wMod+Return exec xfce4-terminal
+bindsym $wMod+$aMod+Return exec xfce4-terminal --drop-down
 
 # kill focused window
-bindsym Mod4+Shift+q kill
+bindsym $wMod+Shift+q kill
 
 #control keys
 
@@ -68,68 +73,68 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 
 # start dmenu (a program launcher)
-bindsym Mod4+d exec dmenu_run -b -fn Mono:size=11 -nb '#000' -nf '#FFF' -sb '#0050AA' -sf '#FFF' 
+bindsym $wMod+d exec dmenu_run -b -fn Mono:size=11 -nb '#000' -nf '#FFF' -sb '#0050AA' -sf '#FFF' 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $aMod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym Mod4+$left focus left
-bindsym Mod4+$down focus down
-bindsym Mod4+$up focus up
-bindsym Mod4+$right focus right
+bindsym $wMod+$left focus left
+bindsym $wMod+$down focus down
+bindsym $wMod+$up focus up
+bindsym $wMod+$right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Left focus left
-bindsym Mod4+Down focus down
-bindsym Mod4+Up focus up
-bindsym Mod4+Right focus right
+bindsym $wMod+Left focus left
+bindsym $wMod+Down focus down
+bindsym $wMod+Up focus up
+bindsym $wMod+Right focus right
 
 # move focused window
-bindsym Mod4+Shift+$left move left
-bindsym Mod4+Shift+$down move down
-bindsym Mod4+Shift+$up move up
-bindsym Mod4+Shift+$right move right
+bindsym $wMod+Shift+$left move left
+bindsym $wMod+Shift+$down move down
+bindsym $wMod+Shift+$up move up
+bindsym $wMod+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Shift+Left move left
-bindsym Mod4+Shift+Down move down
-bindsym Mod4+Shift+Up move up
-bindsym Mod4+Shift+Right move right
+bindsym $wMod+Shift+Left move left
+bindsym $wMod+Shift+Down move down
+bindsym $wMod+Shift+Up move up
+bindsym $wMod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+c split h
+bindsym $wMod+h split h
 
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym $wMod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod4+f fullscreen toggle
+bindsym $wMod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod4+s layout stacking
-bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout toggle split
+bindsym $wMod+s layout stacking
+bindsym $wMod+w layout tabbed
+bindsym $wMod+e layout toggle split
 
 # toggle tiling / floating
-bindsym Mod4+Shift+space floating toggle
+bindsym $wMod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod4+space focus mode_toggle
+bindsym $wMod+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod4+a focus parent
+bindsym $wMod+a focus parent
 
 # focus the child container
-#bindsym Mod1+d focus child
+#bindsym $aMod+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym Mod4+Shift+minus move scratchpad
+bindsym $wMod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod4+minus scratchpad show
+bindsym $wMod+minus scratchpad show
 
 set $wk_sp_1 "1: "
 set $wk_sp_2 "2: "
@@ -143,35 +148,35 @@ set $wk_sp_9 "9: "
 set $wk_sp_10 "10: "
 
 # switch to workspace
-bindsym Mod4+1 workspace $wk_sp_1
-bindsym Mod4+2 workspace $wk_sp_2
-bindsym Mod4+3 workspace $wk_sp_3
-bindsym Mod4+4 workspace $wk_sp_4
-bindsym Mod4+5 workspace $wk_sp_5
-bindsym Mod4+6 workspace $wk_sp_6
-bindsym Mod4+7 workspace $wk_sp_7
-bindsym Mod4+8 workspace $wk_sp_8
-bindsym Mod4+9 workspace $wk_sp_9
-bindsym Mod4+0 workspace $wk_sp_10
+bindsym $wMod+1 workspace $wk_sp_1
+bindsym $wMod+2 workspace $wk_sp_2
+bindsym $wMod+3 workspace $wk_sp_3
+bindsym $wMod+4 workspace $wk_sp_4
+bindsym $wMod+5 workspace $wk_sp_5
+bindsym $wMod+6 workspace $wk_sp_6
+bindsym $wMod+7 workspace $wk_sp_7
+bindsym $wMod+8 workspace $wk_sp_8
+bindsym $wMod+9 workspace $wk_sp_9
+bindsym $wMod+0 workspace $wk_sp_10
 
 # move focused container to workspace
-bindsym Mod4+Shift+1 move container to workspace $wk_sp_1
-bindsym Mod4+Shift+2 move container to workspace $wk_sp_2
-bindsym Mod4+Shift+3 move container to workspace $wk_sp_3
-bindsym Mod4+Shift+4 move container to workspace $wk_sp_4
-bindsym Mod4+Shift+5 move container to workspace $wk_sp_5
-bindsym Mod4+Shift+6 move container to workspace $wk_sp_6
-bindsym Mod4+Shift+7 move container to workspace $wk_sp_7
-bindsym Mod4+Shift+8 move container to workspace $wk_sp_8
-bindsym Mod4+Shift+9 move container to workspace $wk_sp_9
-bindsym Mod4+Shift+0 move container to workspace $wk_sp_10
+bindsym $wMod+Shift+1 move container to workspace $wk_sp_1
+bindsym $wMod+Shift+2 move container to workspace $wk_sp_2
+bindsym $wMod+Shift+3 move container to workspace $wk_sp_3
+bindsym $wMod+Shift+4 move container to workspace $wk_sp_4
+bindsym $wMod+Shift+5 move container to workspace $wk_sp_5
+bindsym $wMod+Shift+6 move container to workspace $wk_sp_6
+bindsym $wMod+Shift+7 move container to workspace $wk_sp_7
+bindsym $wMod+Shift+8 move container to workspace $wk_sp_8
+bindsym $wMod+Shift+9 move container to workspace $wk_sp_9
+bindsym $wMod+Shift+0 move container to workspace $wk_sp_10
 
 # reload the configuration file
-bindsym Mod4+Shift+c reload
+bindsym $wMod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod4+Shift+r restart
+bindsym $wMod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $wMod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -197,28 +202,30 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym Mod4+r mode "resize"
+bindsym $wMod+r mode "resize"
 
-default_border none
+default_border pixel 2
 
 # windows colors
 # 			border			background		text			indicator
-client.focused		$bg-color		$bg-color		$text-color		#007000
+client.focused		$bg-color		$bg-color		#000000		        #007000
 client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#007000
 client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#007000
 client.urgent		#A00000          	#A00000         	$text-color		#007000
 
-hide_edge_borders both
+#hide_edge_borders both
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	i3bar_command i3bar -t
 	position top
 	tray_padding 0
         status_command /home/dragon/.config/conky/i3status.sh
 	colors {
 
-		background #000000
+		background #00000000
+                #background #000000
 		separator  #757575
 		#			border			background			text
 		#
@@ -233,43 +240,42 @@ bar {
 
 #Binds shortcut
 
-bindsym Mod4+t border toggle
-bindsym Mod4+Mod1+b exec firefox
-bindsym Mod4+Mod1+f exec pcmanfm
-bindsym Mod4+Mod1+e exec sublime
-bindsym Mod4+Mod1+v exec virtualbox
-bindsym Mod4+Mod1+g exec gnome-chess
-bindsym Mod4+Shift+i exec shutdown -h now
-bindsym Mod4+Shift+g exec reboot
-bindsym Mod1+c exec orage -t
+bindsym $wMod+t border toggle
+bindsym $wMod+$aMod+b exec chromium
+bindsym $wMod+$aMod+f exec pcmanfm
+bindsym $wMod+$aMod+e exec sublime
+bindsym $wMod+$aMod+v exec virtualbox
+bindsym $wMod+$aMod+g exec gnome-chess
+bindsym $wMod+Shift+i exec shutdown -h now
+bindsym $wMod+Shift+g exec reboot
+bindsym $aMod+c exec orage -t
 assign [class="^VirtualBox$"] $wk_sp_5
-bindsym Mod4+Mod1+t exec et
+assign [class="^VirtualBox Manager$"] $wk_sp_5
+bindsym $wMod+$aMod+t exec et
 assign [class="^Et$"] $wk_sp_8
-bindsym Mod4+Mod1+o exec wps
+bindsym $wMod+$aMod+o exec wps
 assign [class="^Wps$"] $wk_sp_8
-bindsym Mod4+Mod1+p exec wpp
+bindsym $wMod+$aMod+p exec wpp
 assign [class="^Wpp$"] $wk_sp_8
-bindsym Mod4+Mod1+c exec gnome-calculator
-bindsym Mod1+s exec flameshot gui
-bindsym Mod4+Mod1+m exec telegram-desktop
+bindsym $wMod+$aMod+c exec gnome-calculator
+bindsym $aMod+s exec flameshot gui
+bindsym $wMod+$aMod+m exec telegram-desktop
 assign [class="^TelegramDesktop$"] $wk_sp_7
-bindsym Mod4+Mod1+k exec vk-messenger
+bindsym $wMod+$aMod+k exec vk-messenger
 assign [class="^VK$"] $wk_sp_7
-bindsym Mod4+Mod1+n exec boostnote
-assign [class="^Boostnote$"] $wk_sp_6
-bindsym Mod4+Mod1+l exec vlc
+bindsym $wMod+$aMod+l exec vlc
 assign [class="^vlc$"] $wk_sp_9
 assign [class="^Transmission-gtk$"] $wk_sp_10
 
 #Autostarts
 
+exec --no-startup-id syndaemon -t -i 1.5 -d
 exec --no-startup-id nm-applet 
-exec --no-startup-id (sleep 3 && sbxkb)
-exec --no-startup-id (sleep 4 && batterymon)
+exec --no-startup-id (sleep 4 && gxkb)
 exec --no-startup-id (sleep 5 && orage)
-exec --no-startup-id (sleep 6 && flameshot)
-exec_always compton --inactive-dim 0.3 --no-fading-openclose --inactive-dim-fixed --config /dev/null
-# exec_always compton --config /home/dragon/.compton.conf
+exec --no-startup-id (sleep 6 && batterymon)
+exec --no-startup-id flameshot
+exec --no-startup-id xcompmgr
 exec --no-startup-id setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
-exec_always --no-startup-id feh --bg-fill /home/dragon/.wallpapers/45.jpg
+exec_always --no-startup-id feh --bg-fill /home/dragon/.wallpapers/67.jpg
 exec --no-startup-id xscreensaver -nosplash
