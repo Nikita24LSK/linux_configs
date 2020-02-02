@@ -1,0 +1,138 @@
+[colors]
+bg = #990a0a0a
+bg-alt = #990a0a0a
+fg = #f5f5f5
+fg-alt = #f5f5f5
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+
+[bar/top]
+monitor = eDP-1
+font-0 = "Droid Sans Mono:style=Bold:size=13;0"
+font-1 = "Font Awesome 5 Free Regular:size=12;0"
+font-2 = "Font Awesome 5 Free Solid:size=12;0"
+font-3 = "Font Awesome 5 Brands Regular:size=12;0"
+font-4 = "font-logos Regular:size=12;0"
+width = 100%
+height = 30
+radius = 0
+fixed-center = true
+padding = 0
+module-margin = 1
+background = ${colors.bg}
+foreground = ${colors.fg}
+line-size = 3
+line-color = #f00
+modules-center = date
+modules-left = i3 cpu memory filesystem
+modules-right = weather network backlight alsa battery xkeyboard
+tray-detached = false
+tray-position = right
+tray-offset-x = 0
+tray-offset-y = 0
+tray-maxsize = 21
+tray-padding = 0.5
+tray-scale = 1.0
+
+
+[module/date]
+type = custom/script
+interval = 1.0
+exec = date +"%A, %d %b %Y %T"
+click-left = exec orage -t 
+
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-scroll = false
+format = <label-state> <label-mode>
+label-focused = " %index% "
+label-unfocused = %index%
+label-visible = %index%
+label-urgent = %index%
+label-focused-underline = #09f
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+
+[module/alsa]
+type = internal/alsa
+master-soundcard = default
+mapped = true
+master-mixer = Master
+interval = 10
+format-volume = <ramp-volume> <label-volume>
+label-muted = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+[module/battery]
+type = internal/battery
+full-at = 98
+battery = BAT0
+adapter = ADP1
+time-format = %H:%M
+format-charging = <label-charging>
+format-discharding = <label-discharding>
+format-full = <label-full>
+label-charging =  %percentage%%
+label-discharging =  %percentage%%
+label-full = 
+
+
+[module/network]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+format-connected = <label-connected>
+format-diconnected = <label-disconnected>
+label-connected =  %local_ip%
+label-disconnected =  No network
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = false
+format = <label>
+label =  %percentage%%
+
+
+[module/cpu]
+type = internal/cpu
+format = <label>
+label =  %percentage%%
+
+
+[module/memory]
+type = internal/memory
+format = <label>
+label =  %percentage_used%%   %percentage_swap_used%%
+
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+mount-1 = /home
+fixed-values = true
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+label-mounted =  %free%
+label-unmounted =  NM
+
+
+[module/weather]
+type = custom/script
+interval = 1800
+exec = python /home/nikita/.config/polybar/get_weather.py

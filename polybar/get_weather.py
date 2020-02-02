@@ -6,7 +6,7 @@ import re
 sleep(2)
 
 try:
-	req = rq.get('https://p.ya.ru/krasnoyarsk', timeout=3)
+	req = rq.get('https://p.ya.ru', timeout=3)
 except rq.exceptions.ConnectionError:
 	print("- ℃", end='')
 	exit()
@@ -17,4 +17,10 @@ if (req.status_code != 200):
 
 html = req.text
 temper = re.findall('{\"temp\":([-+]*[\d]+)}', html)
-print("{} ℃".format(temper[0]), end='')
+temper = int(temper[0])
+if temper > 0:
+    icon = ""
+else:
+    icon = ""
+
+print("{} {}℃".format(icon, temper), end='')
