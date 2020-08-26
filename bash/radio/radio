@@ -8,8 +8,8 @@ hotkeys=(
 )
 
 if [[ $1 =~ $num_re ]]; then
-	stantions_num=$(wc -l $LISTPATH | grep -Eo "[0-9]+ ")
-	if [[ $1 > $stantions_num ]] || [[ $1 == 0 ]]; then
+	stations_num=$(wc -l $LISTPATH | grep -Eo "[0-9]+ ")
+	if [[ $1 -gt $stations_num ]] || [[ $1 -eq 0 ]]; then
 			exit 0;
 	fi
 
