@@ -1,5 +1,5 @@
 function battery_charge {
-  bat_percent=`acpi | awk -F ':' {'print $2;'} | awk -F ',' {'print $2;'} | sed -e "s/\s//" -e "s/%.*//"`
+  bat_percent=`acpi | grep -Eo "[0-9]{1,3}%" | grep -Eo "[0-9]{1,3}"`
   bat_status=`acpi | grep -Eo "Charging|Discharging"`
 
   if [ $bat_percent -lt 20 ]; then local bat_color='%B%F{red}'
