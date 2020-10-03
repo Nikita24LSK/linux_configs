@@ -24,18 +24,24 @@ class TranslateApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         
-        self.translate_shortcut = QtWidgets.QShortcut(QKeySequence('Ctrl+Return'), self)
-        self.translate_shortcut.activated.connect(self.translate_text)
+        self.translate_shortcut_clear = QtWidgets.QShortcut(QKeySequence('Ctrl+Return'), self)
+        self.translate_shortcut_clear.activated.connect(lambda: self.translate_text(True))
+
+        self.translate_shortcut_non_clear = QtWidgets.QShortcut(QKeySequence('Ctrl+Shift+Return'), self)
+        self.translate_shortcut_non_clear.activated.connect(lambda: self.translate_text(False))
         
         self.exit_shortcut = QtWidgets.QShortcut(QKeySequence('Esc'), self)
         self.exit_shortcut.activated.connect(QtWidgets.QApplication.instance().quit)
 
-    def translate_text(self):
+    def translate_text(self, flag):
         text = self.textEdit.toPlainText()
 
         if text == "":
             show_messageBox("Не введен текст для перевода", "Ошибка", QtWidgets.QMessageBox.Critical, QtWidgets.QMessageBox.Ok)
             return
+
+        if flag:
+            self.textEdit.clear()
 
         os.system('trans-notify-win "{}"'.format(text))
 
