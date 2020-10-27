@@ -241,7 +241,7 @@ bindsym $mod+Mod1+7 exec --no-startup-id radio 7
 bindsym $mod+Mod1+8 exec --no-startup-id radio 8
 bindsym $mod+Mod1+9 exec --no-startup-id radio 9
 bindsym $mod+Mod1+0 exec --no-startup-id radio 10
-bindsym $mod+Mod1+- exec --no-startup-id radio nlist
+bindsym $mod+Mod1+minus exec --no-startup-id radio nlist
 
 # Start apps hotkeys
 bindsym $mod+Shift+i exec shutdown -h now

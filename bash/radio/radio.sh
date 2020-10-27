@@ -25,7 +25,7 @@ elif [[ $1 == "list" ]] || [[ $1 == "nlist" ]]; then
 		if [[ $1 == "list" ]]; then
 				echo "$list_stations";
 		else
-				notify-send "Список станций" "$list_stations";
+				notify-send -t 4 "Список станций" "$list_stations";
 		fi
 else
 		exit 0;	
