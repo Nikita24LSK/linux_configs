@@ -19,7 +19,7 @@ if version >= 700
   hi CursorColumn guifg=#ffffff guibg=#303030 ctermbg=238
   hi iCursor      guifg=#000000 guibg=#d0d0d0 ctermfg=0 ctermbg=252
   hi Incsearch    guifg=#ff00ff guibg=NONE gui=underline ctermfg=201 ctermbg=NONE cterm=underline
-  hi MatchParen   guifg=#ffaf00 guibg=NONE gui=bold ctermfg=214 ctermbg=NONE cterm=bold
+  hi MatchParen   guifg=#ffaf00 guibg=NONE gui=bold ctermfg=214 ctermbg=0 cterm=bold
   hi Pmenu        guifg=#eeeeee guibg=#444444 ctermfg=255 ctermbg=238
   hi PmenuSel     guifg=#000000 guibg=#df8700 ctermfg=0 ctermbg=172
   hi Search       guifg=#ff00ff guibg=NONE gui=underline ctermfg=201 ctermbg=NONE cterm=underline
@@ -28,7 +28,7 @@ endif
 " General colors
 hi Cursor         guifg=#000000 guibg=#d0d0d0 ctermfg=0 ctermbg=252
 hi CursorLineNr   guifg=#ffff00 guibg=NONE ctermfg=11 ctermbg=NONE
-hi ColorColumn    guibg=#000080 ctermbg=4
+hi ColorColumn    guibg=#000080 ctermbg=235
 hi Directory      guifg=#00ffff guibg=NONE ctermfg=14 ctermbg=NONE
 hi ErrorMsg       guifg=#ffffff guibg=#ff0000 gui=NONE ctermfg=15 ctermbg=9 cterm=NONE
 hi Error          guifg=#ffffff guibg=#ff0000 gui=underline ctermfg=15 ctermbg=9 cterm=underline

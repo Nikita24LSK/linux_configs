@@ -1,34 +1,43 @@
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/AppData/Local/nvim-data/site/plugged')
 
 " Make sure you use single quotes
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+Plug 'christophermca/meta5'
+
 Plug 'lervag/vimtex'
 
-Plug 'christophermca/meta5'
 " Initialize plugin system
 call plug#end()
 
+colorscheme meta5
+syntax on
+
 set showcmd
 set mouse=a
-syntax on
 set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set nu
 set relativenumber
-set colorcolumn=80
+set ch=1
+set autoindent
+set smartindent
+set wildmenu
+set history=200
+set tw=79
+set colorcolumn=-6,+1
+set foldmethod=indent
+set nofoldenable
 
 " Mapping
-map <F5> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
-colorscheme meta5
-highlight ColorColumn ctermbg=235
